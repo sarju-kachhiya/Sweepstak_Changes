@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Overlapping Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #e7f2fb;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row {
+            position: relative;
+        }
+
+        .card {
+            background-image: linear-gradient(To right, #399DC4, #96CDE7);
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+
+
+
+        /* Overlapping effect for desktop */
+        @media (min-width: 768px) {
+            .row:nth-child(2) {
+                margin-top: -30px;
+                /* Overlaps the second row closer to the first */
+            }
+
+            .row:nth-child(3) {
+                margin-top: -30px;
+                /* Overlaps the third row closer to the second */
+            }
+
+            .row:nth-child(3) .card {
+                margin-left: 20px;
+                /* Creates horizontal overlapping */
+            }
+
+            .row:nth-child(3) .card:first-child {
+                margin-left: 0;
+                /* Aligns the first card in the third row properly */
+            }
+        }
+
+        /* Mobile-friendly adjustments */
+        @media (max-width: 767px) {
+            .row {
+                margin-top: 0;
+            }
+
+            .card {
+                width: 100%;
+                /* Full width for cards on mobile */
+                height: auto;
+                /* Maintain aspect ratio */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="card-container">
+            <!-- Row 1: Single Card -->
+            <div class="row d-flex justify-content-center">
+                <div class="card">
+                    <img src="assets/image/New Project (1).png" alt="Card 1">
+                </div>
+            </div>
+            <!-- Row 2: Two Cards -->
+            <div class="row d-flex justify-content-center">
+                <div class="card">
+                    <img src="assets/image/New Project (1).png" alt="Card 2">
+                </div>
+                <div class="card">
+                    <img src="assets/image/New Project (1).png" alt="Card 3">
+                </div>
+            </div>
+            <!-- Row 3: Three Overlapping Cards -->
+            <div class="row d-flex justify-content-center">
+                <div class="card">
+                    <img src="assets/image/New Project (1).png" alt="Card 4">
+                </div>
+                <div class="card">
+                    <img src="assets/image/New Project (1).png" alt="Card 5">
+                </div>
+                <div class="card">
+                    <img src="assets/image/New Project (1).png" alt="Card 6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
