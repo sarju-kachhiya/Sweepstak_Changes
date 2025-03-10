@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +16,70 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+        .card {
+            width: 100%;
+            max-width: 200px;
+            height: 250px;
+            cursor: pointer;
+            perspective: 1000px;
+            margin: auto;
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #ffc107;
+            border-radius: 8px;
+        }
+        .disabled-card {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        @media (max-width: 768px) { /* For tablets and smaller screens */
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 480px) { /* For mobile screens */
+    .card-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
+    }
+}
     </style>
 </head>
-
 <body class="sw-site">
-
-    <!-- header strat -->
     <header class="sw-header-section">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
@@ -32,137 +89,53 @@
             </div>
         </nav>
     </header>
-    <!-- header end -->
-
-    <!-- main content start -->
     <main class="sw-content">
-        <!-- breadcrumb section start -->
-        <!-- <section class="sw-breadcrumb-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-12 col-lg-12">
-                        <div class="sw-breadcrumb__inner">
-                            <div class="sw-breadcrumb-heading">
-                                <h1 class="sw-breadcrumb-title">Country locked</h1>
-                            </div>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Country-locked</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- breadcrumb section end -->
-
-        <!-- error section start-->
-        <!-- <section class="mp-error-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-10 col-lg-6 mx-auto">
-                        <div class="mp-error-wrapper">
-                            <div class="mp-error-image">
-                                <img src="assets/image/lock.png" class="img-fluid" alt="error image">
-                            </div>
-                            <div class="mp-error-content">
-                                <h2 class="mp-error-title">Country Locked</h2>
-                                <p class="mp-error-description">We are locked in your Country</p>
-                                <div class="mp-error-buttons">
-                                    <a href="index.html" class="btn btn-primary">Go Back To Home Page</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- error section end-->
         <section class="sw-hero-section">
             <div class="container">
-                <h2 class="text-center mt-3 mb-3 grd">Champion! You Won This Offer.</h2>
-                <div class="row align-items-center mt-5">
-                    <div class="col-12 col-md-8 col-lg-6 mx-auto">
-                        <div class="sw-hero-image">
-                            <img src="assets/image/iphone mockup 02.png" class="img-fluid" alt="hero image">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-10 col-lg-6 col-xl-6 mx-auto">
-                        <div class="sw-hero-form-wrapper">
-                            <div class="sw-hero-formbox">
-                                <div class="sw-hero-form-heading text-center">
-                                    <h3 class="sw-hero-form-title">
-                                        Fill this form & grab the offer
-                                    </h3>
-                                    <!-- <p class="sw-hero-form-description">Join today for a free survey and get rewarded
-                                        with gift vouchers and many more</p> -->
-                                </div>
-                                <form class="row g-3 sw-hero-form" action="#">
-                                    <div class="col-12">
-                                        <label for="inputName" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="inputName"
-                                            placeholder="FirstName LastName" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputEmail4" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4"
-                                            placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputAddress" class="form-label">Address</label>
-                                        <input type="address" class="form-control" id="inputAddress"
-                                            placeholder="Address" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="inputCity" class="form-label">City</label>
-                                        <input type="city" class="form-control" id="inputCity"
-                                            placeholder="Enter Your City" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="inputState" class="form-label">State</label>
-                                        <input type="state" class="form-control" id="inputState"
-                                            placeholder="Enter State" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="inputZip" class="form-label">Zip</label>
-                                        <input type="zip" class="form-control" id="inputZip" placeholder="Enter Zip"
-                                            required>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="inputPhone" class="form-label">Phone Number</label>
-                                        <input type="phone" class="form-control" id="inputPhone"
-                                            placeholder="Enter your Phone Number" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary w-100 mt-2">Submit</button>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="sw-hero-form-footer text-center">
-                                            <p><small> By clicking "Submit", I confirm that I have read & agree to the
-                                                    Sweepswin <a href="terms.html">Terms</a> and <a
-                                                        href="privacy.html">Privacy</a></small> </p>
-                                        </div>
-                                    </div>
-                                    <div id="successMessage" class="col-12 mt-3" style="display: none;">
-                                        <div class="alert alert-success" role="alert">
-                                            Thank you for submitting the form! We will respond to you soon.
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <h2 class="text-center mt-3 mb-lg-5 grd">Champion! You Won This Offer. <br><span style="font-size: 14px;">(Choose One card as offer)</span></h2>
+                <div class="card-container" id="cardContainer">
+                    <!-- Cards will be generated here -->
                 </div>
+                
+                <script>
+                    const offers = [
+                        { img: "assets/image/ofr1.png", text: "Offer 1" },
+                        { img: "assets/image/ofr2.png", text: "Offer 2" },
+                        { img: "assets/image/ofr3.png", text: "Offer 3" },
+                        { img: "assets/image/ofr4.png", text: "Offer 4" },
+                        { img: "assets/image/ofr5.png", text: "Offer 5" },
+                        { img: "assets/image/ofr6.png", text: "Offer 6" },
+                        { img: "assets/image/offer7.jpg", text: "Offer 7" },
+                        { img: "assets/image/offer8.jpg", text: "Offer 8" },
+                        { img: "assets/image/offer9.jpg", text: "Offer 9" }
+                    ];
+                
+                    const cardContainer = document.getElementById("cardContainer");
+                
+                    // Generate the cards dynamically
+                    let cardHTML = "";
+                    for (let i = 0; i < offers.length; i++) {
+                        cardHTML += `
+                            <div class="card" onclick="flipCard(this)">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img src="assets/image/card front.jpg" alt="Front Image">
+                                    </div>
+                                    <div class="card-back p-3 text-center">
+                                        <img src="${offers[i].img}" alt="${offers[i].text}">
+                                        <p class="mt-1">${offers[i].text}</p>
+                                        <button class="btn btn-primary mt-1 claim-btn" data-offer="${offers[i].text}">Claim</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }  
+                    cardContainer.innerHTML = cardHTML;              
+                </script>
+                
             </div>
         </section>
-
-
     </main>
-    <!-- main content end -->
-
-    <!-- footer start  -->
     <footer class="sw-footer-section">
         <div class="sw-footer-center">
             <div class="container">
@@ -261,38 +234,27 @@
             </div>
         </div>
     </footer>
-    <!-- footer end -->
-
-
-
-    <a href="#" class="sw-scroll-to-top"><i class="fa-solid fa-angles-up"></i></a>
-
-
-
-
-
-    <!-- all js -->
-    <script>
-        const form = document.querySelector('.sw-hero-form');
-        const successMessage = document.getElementById('successMessage');
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent default form submission
-
-            // Here, you would typically send the form data to a server using AJAX
-
-            // Simulate successful submission (replace with actual server-side logic)
-            successMessage.style.display = 'block';
-
-            // Optionally, reset the form after a delay
-            setTimeout(() => {
-                form.reset();
-            }, 3000); // Reset form after 3 seconds
-        });
+    <script>               
+                // Flip card function
+                function flipCard(card) {
+                    if (document.querySelector('.flipped')) return; // Prevent multiple selections
+                    card.classList.add('flipped');
+                    document.querySelectorAll('.card').forEach(c => {
+                        if (c !== card) c.classList.add('disabled-card');
+                    });
+                }
+            
+                // Attach event listener to all "Claim" buttons
+                document.querySelectorAll(".claim-btn").forEach(button => {
+                    button.addEventListener("click", function (event) {
+                        event.stopPropagation(); // Prevent card from flipping back
+                        const offerName = this.getAttribute("data-offer");
+                        window.location.href = `form2.html?offer=${encodeURIComponent(offerName)}`;
+                    });
+                });
     </script>
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/custom.js"></script>
 </body>
-
 </html>
