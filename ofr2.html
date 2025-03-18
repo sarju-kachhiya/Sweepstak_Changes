@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sweepwin 2</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/image/favicon.png" type="image/x-icon">
+    <!-- all css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .bdy {
+            background: #FBFBFB;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .offer-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .offer-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: filter 0.5s ease-in-out;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .offer-container:hover .offer-image {
+            filter: brightness(0.6);
+        }
+
+        .content {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            
+        }
+
+        .offer-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: #33B5F7;
+        }
+
+        .offer-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-accept {
+            background: #33B5F7;
+            position: absolute;
+            bottom: 40px;
+            right: 70px;
+            width: 130px;
+        }
+
+        .btn-decline {
+            background: #777;
+            position: absolute;
+            bottom: 40px;
+            left: 70px;
+            width: 130px;
+        }
+
+        .btn-decline:hover {
+            background: #ad1515;
+            position: absolute;
+            width: 180px;
+            color: #cdcdcd;
+        }
+
+        .btn-accept:hover {
+            background: #00851d;
+            position: absolute;
+            width: 180px;
+            color: #FBFBFB;
+        }
+
+        .btn-custom:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="sw-site">
+
+    <!-- header strat -->
+    <header class="sw-header-section">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/image/logo.png" class="img-fluid d-flex justify-content-center align-items-center" alt="main logo">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- header end -->
+    <div class="bdy">
+        <div class="offer-container">
+            <img src="assets/image/ofr2_.jpg" alt="Offer Image" class="offer-image">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="offer-title">Limited Time Offer!</div>
+                <p class="offer-text">Get 40% off your first order. Don't miss out!</p>
+            </div>
+            <button class="btn btn-custom btn-accept" onclick="window.location.href='ofr3.html'">Accept</button>
+            <button class="btn btn-custom btn-decline" onclick="window.location.href='ofr3.html'">Decline</button>
+        </div>
+    </div>
+
+    <!-- footer start  -->
+    <footer class="sw-footer-section">
+        <div class="sw-footer-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="sw-footer-about">
+                            <a class="sw-footer-logo" href="index.html">
+                                <img src="assets/image/logo.png" class="img-fluid" alt="footer logo">
+                            </a>
+                            <div class="sw-footer-about-content">
+                                <p class="sw-footer-about-description">Don’t miss the chance</p>
+                                <p class="sw-footer-about-description"><strong>Grab your luck to win $500.00 with the Sweepwin</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-7 offset-lg-1">
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="sw-footer-block">
+                                    <h4 class="sw-footer-block-title">Useful Links</h4>
+                                    <ul class="sw-footer-block-list">
+                                        <li class="sw-footer-block-item">
+                                            <a href="index.html" class="sw-footer-block-link">Home</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="howitworks.html" class="sw-footer-block-link">how it works</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="rules.html" class="sw-footer-block-link">Official Contest Rules</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="sw-footer-block">
+                                    <h4 class="sw-footer-block-title">Useful Links</h4>
+                                    <ul class="sw-footer-block-list">
+                                        <li class="sw-footer-block-item">
+                                            <a href="privacy.html" class="sw-footer-block-link">Privacy Policy</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="terms.html" class="sw-footer-block-link">Terms & Conditions</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="unsubscribe.html" class="sw-footer-block-link">Unsubscribe</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="sw-footer-block mb-0">
+                                    <h4 class="sw-footer-block-title">Let's talk</h4>
+                                    <ul class="sw-footer-block-list">
+                                        <li class="sw-footer-block-item">
+                                            <a href="javascript:void(0);" class="sw-footer-block-link">sweepwin@gmial.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sw-footer-bottom">
+            <div class="container">
+                <div class="sw-footer-bottom__inner">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-6">
+                            <p class="sw-copyright-text">Copyright © 2023 My Personal Advance. All rights reserved.</p>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <ul class="sw-footer-social-list">
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-twitter"></i></a>
+                                </li>
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-google-plus-g"></i></a>
+                                </li>
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+    <a href="#" class="sw-scroll-to-top"><i class="fa-solid fa-angles-up"></i></a>
+
+
+    <!-- all js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+
+</html>

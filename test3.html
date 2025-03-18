@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sweepwin 2</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/image/favicon.png" type="image/x-icon">
+    <!-- all css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+    background: linear-gradient(90deg, #6b48ff, #00ddeb);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #ffcc00;
+    transition: width 0.3s ease;
+}
+
+.tab-button:hover::after,
+.tab-button.active::after {
+    width: 100%;
+}
+
+.tab-button.active {
+    color: #ffcc00;
+}
+
+/* Offer Cards */
+.card {
+    background: linear-gradient(135deg, #47A3CB, #879aa4);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    color: white;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.btn-warning {
+    background-color: #ffcc00;
+    border: none;
+    color: #333;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+.btn-warning:hover {
+    background-color: #ffdb4d;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .category-tabs {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .tab-button {
+        padding: 6px 15px;
+    }
+}
+    </style>
+</head>
+
+<body class="sw-site">
+
+    <!-- header strat -->
+    <header class="sw-header-section">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/image/logo.png" class="img-fluid" alt="main logo">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- header end -->
+
+
+
+    <div class="container my-5">
+        <!-- Category Tabs -->
+        <div class="category-tabs mb-4" id="categoryTabs">
+            <button class="tab-button active" data-category="all">All</button>
+            <button class="tab-button" data-category="games">Games</button>
+            <button class="tab-button" data-category="surveys">Surveys</button>
+            <button class="tab-button" data-category="apps">Apps</button>
+            <button class="tab-button" data-category="trials">Trials</button>
+        </div>
+
+        <!-- Offer Grid -->
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="offerGrid">
+            <!-- Offer 1 -->
+            <div class="col offer" data-category="games">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="assets/image/ofr1.png" alt="Offer Image" class="me-3">
+                        <div>
+                            <h5 class="card-title"><b>Play Galaxy Quest</b></h5>
+                            <p class="card-text">Earn 100 Coins</p>
+                            <a href="#" class="btn btn-warning">Claim Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer 2 -->
+            <div class="col offer" data-category="surveys">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="assets/image/ofr2.png" alt="Offer Image" class="me-3">
+                        <div>
+                            <h5 class="card-title"><b>Take a Quick Survey</b></h5>
+                            <p class="card-text">Earn 50 Points</p>
+                            <a href="#" class="btn btn-warning">Claim Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer 3 -->
+            <div class="col offer" data-category="apps">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="assets/image/ofr3.png" alt="Offer Image" class="me-3">
+                        <div>
+                            <h5 class="card-title"><b>Download App Z</b></h5>
+                            <p class="card-text">Earn 75 Coins</p>
+                            <a href="#" class="btn btn-warning">Claim Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer 4 -->
+            <div class="col offer" data-category="trials">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="assets/image/ofr4.png" alt="Offer Image" class="me-3">
+                        <div>
+                            <h5 class="card-title"><b>Start a Free Trial</b></h5>
+                            <p class="card-text">Earn 120 Points</p>
+                            <a href="#" class="btn btn-warning">Claim Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer 5 -->
+            <div class="col offer" data-category="games">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="assets/image/ofr5.png" alt="Offer Image" class="me-3">
+                        <div>
+                            <h5 class="card-title"><b>Watch Ad Video</b></h5>
+                            <p class="card-text">Earn 30 Coins</p>
+                            <a href="#" class="btn btn-warning">Claim Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer 6 -->
+            <div class="col offer" data-category="surveys">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="assets/image/ofr6.png" alt="Offer Image" class="me-3">
+                        <div>
+                            <h5 class="card-title"><b>Complete Quiz</b></h5>
+                            <p class="card-text">Earn 60 Points</p>
+                            <a href="#" class="btn btn-warning">Claim Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer start  -->
+    <footer class="sw-footer-section">
+        <div class="sw-footer-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="sw-footer-about">
+                            <a class="sw-footer-logo" href="index.html">
+                                <img src="assets/image/logo.png" class="img-fluid" alt="footer logo">
+                            </a>
+                            <div class="sw-footer-about-content">
+                                <p class="sw-footer-about-description">Don’t miss the chance</p>
+                                <p class="sw-footer-about-description"><strong>Grab your luck to win $500.00 with the Sweepwin</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-7 offset-lg-1">
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="sw-footer-block">
+                                    <h4 class="sw-footer-block-title">Useful Links</h4>
+                                    <ul class="sw-footer-block-list">
+                                        <li class="sw-footer-block-item">
+                                            <a href="index.html" class="sw-footer-block-link">Home</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="howitworks.html" class="sw-footer-block-link">how it works</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="rules.html" class="sw-footer-block-link">Official Contest Rules</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="sw-footer-block">
+                                    <h4 class="sw-footer-block-title">Useful Links</h4>
+                                    <ul class="sw-footer-block-list">
+                                        <li class="sw-footer-block-item">
+                                            <a href="privacy.html" class="sw-footer-block-link">Privacy Policy</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="terms.html" class="sw-footer-block-link">Terms & Conditions</a>
+                                        </li>
+                                        <li class="sw-footer-block-item">
+                                            <a href="unsubscribe.html" class="sw-footer-block-link">Unsubscribe</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="sw-footer-block mb-0">
+                                    <h4 class="sw-footer-block-title">Let's talk</h4>
+                                    <ul class="sw-footer-block-list">
+                                        <li class="sw-footer-block-item">
+                                            <a href="javascript:void(0);" class="sw-footer-block-link">sweepwin@gmial.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sw-footer-bottom">
+            <div class="container">
+                <div class="sw-footer-bottom__inner">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-6">
+                            <p class="sw-copyright-text">Copyright © 2023 My Personal Advance. All rights reserved.</p>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <ul class="sw-footer-social-list">
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-twitter"></i></a>
+                                </li>
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-google-plus-g"></i></a>
+                                </li>
+                                <li class="sw-footer-social-item">
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+    <a href="#" class="sw-scroll-to-top"><i class="fa-solid fa-angles-up"></i></a>
+
+
+    <!-- all js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('#categoryTabs .tab-button');
+        const offers = document.querySelectorAll('.offer');
+    
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+    
+                const category = tab.getAttribute('data-category');
+    
+                // Filter offers
+                offers.forEach(offer => {
+                    const offerCategory = offer.getAttribute('data-category');
+                    if (category === 'all' || offerCategory === category) {
+                        offer.style.display = 'block';
+                    } else {
+                        offer.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>
