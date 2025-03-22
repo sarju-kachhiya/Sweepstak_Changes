@@ -14,17 +14,20 @@
     <style>
         .bdy {
             background: #FBFBFB;
-            min-height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Poppins', sans-serif;
+    min-height: 100vh; /* Ensure it takes full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Prevent scrolling if modal-like */
         }
 
         .offer-container {
             position: relative;
             width: 800px;
             height: 500px;
+            max-width: 90vw; /* Ensure it adapts to screen width */
+    max-height: 90vh; /* Ensure it adapts to screen height */
             border-radius: 50px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
@@ -119,6 +122,12 @@
             color: #FBFBFB;
         }
 
+        .btn-decline:hover,
+.btn-accept:hover {
+    width: 130px; /* Keep width same to avoid shifting */
+    transform: scale(1.1); /* Add slight zoom instead of width change */
+}
+
         .btn-custom:hover {
             opacity: 1;
         }
@@ -140,11 +149,11 @@
     <!-- header end -->
     <div class="bdy">
         <div class="offer-container">
-            <img src="assets/image/ofr3_.jpg" alt="Offer Image" class="offer-image">
+            <img src="assets/image/ofr3_page.png" alt="Offer Image" class="offer-image">
             <div class="overlay"></div>
             <div class="content">
-                <div class="offer-title">Limited Time Offer!</div>
-                <p class="offer-text">Get 40% off your first order. Don't miss out!</p>
+                <div class="offer-title">Target Gift Card</div>
+                <p class="offer-text">Shop for clothing,home-decor,daily essentials at any Target store or online. available for $90 (Save $10)</p>
             </div>
             <button class="btn btn-custom btn-accept" onclick="window.location.href='result.html'">Accept</button>
             <button class="btn btn-custom btn-decline" onclick="window.location.href='result.html'">Decline</button>
@@ -162,8 +171,8 @@
                                 <img src="assets/image/logo.png" class="img-fluid" alt="footer logo">
                             </a>
                             <div class="sw-footer-about-content">
-                                <p class="sw-footer-about-description">Don’t miss the chance</p>
-                                <p class="sw-footer-about-description"><strong>Grab your luck to win $500.00 with the Sweepwin</strong></p>
+                                <p class="sw-footer-about-description">Walmart Gift Card</p>
+                                <p class="sw-footer-about-description"><strong>Use this gift card to shop for groceries, electronics, and household essentials at any Walmart store or online. Original price: $100, now available for $90 (Save $10)</strong></p>
                             </div>
                         </div>
                     </div>

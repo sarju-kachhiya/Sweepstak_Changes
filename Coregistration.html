@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,118 +11,74 @@
     <link rel="stylesheet" href="assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .bdy {
-            background: #FBFBFB;
-            min-height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Poppins', sans-serif;
+        .grd {
+            background: -webkit-linear-gradient(#399DC4, #333745cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .offer-container {
+        .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+        .card {
+            width: 100%;
+            max-width: 200px;
+            height: 250px;
+            cursor: pointer;
+            perspective: 1000px;
+            margin: auto;
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
             position: relative;
-            width: 800px;
-            height: 500px;
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
-
-        .offer-image {
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .card-front img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: filter 0.5s ease-in-out;
+            border-radius: 8px;
         }
-
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
-            transition: opacity 0.5s ease-in-out;
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #ffc107;
+            border-radius: 8px;
         }
-
-        .offer-container:hover .offer-image {
-            filter: brightness(0.6);
+        .disabled-card {
+            pointer-events: none;
+            opacity: 0.5;
         }
+        @media (max-width: 768px) { /* For tablets and smaller screens */
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
 
-        .content {
-            position: absolute;
-            top: 65%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 2;
-            
-        }
-
-        .offer-title {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: #33B5F7;
-        }
-
-        .offer-text {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .btn-custom {
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 20px;
-            font-weight: 600;
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-accept {
-            background: #33B5F7;
-            position: absolute;
-            bottom: 40px;
-            right: 70px;
-            width: 130px;
-        }
-
-        .btn-decline {
-            background: #777;
-            position: absolute;
-            bottom: 40px;
-            left: 70px;
-            width: 130px;
-        }
-
-        .btn-decline:hover {
-            background: #ad1515;
-            position: absolute;
-            width: 180px;
-            color: #cdcdcd;
-        }
-
-        .btn-accept:hover {
-            background: #00851d;
-            position: absolute;
-            width: 180px;
-            color: #FBFBFB;
-        }
-
-        .btn-custom:hover {
-            opacity: 1;
-        }
-
-        #loader {
+@media (max-width: 480px) { /* For mobile screens */
+    .card-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
+    }
+}
+/* Loader Styles */
+#loader {
             position: fixed;
             top: 0;
             left: 0;
@@ -161,8 +116,9 @@
             color: #777;
             font-family: "Poppins", sans-serif;
             font-weight: 600;
-            font-size: 26px;
+            font-size: 36px;
             display: flex;
+            align-items: center;
         }
 
         .words {
@@ -315,7 +271,6 @@
         }
     </style>
 </head>
-
 <body class="sw-site">
     <div class="bdy" id="loader">
         <div class="loader-container">
@@ -323,11 +278,8 @@
             <div class="loader">
                 <p>Verifying</p>
                 <div class="words">
-                    <span class="word">Name</span>
                     <span class="word">Email</span>
-                    <span class="word">Address</span>
-                    <span class="word">Zip</span>
-                    <span class="word">Phone-number</span>
+                    <span class="word">Name</span>
                 </div>
                 <p class="dots">
                     <span>.</span><span>.</span><span>.</span>
@@ -335,32 +287,62 @@
             </div>
         </div>
     </div>
-
-    <!-- header strat -->
     <header class="sw-header-section">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/image/logo.png" class="img-fluid d-flex justify-content-center align-items-center" alt="main logo">
+                    <img src="assets/image/logo.png" class="img-fluid" alt="main logo">
                 </a>
             </div>
         </nav>
     </header>
-    <!-- header end -->
-    <div class="bdy">
-        <div class="offer-container">
-            <img src="assets/image/ofr1_page.png" alt="Offer Image" class="offer-image">
-            <div class="overlay"></div>
-            <div class="content">
-                <div class="offer-title">Samsung Galaxy S25 Ultra</div>
-                <p class="offer-text">Snapdragon 8 Gen 4 processor, a 200MP camera, 6.8-inch AMOLED display, now available for $1,249 (Save $250)</p>
+    <main class="sw-content">
+        <section class="sw-hero-section">
+            <div class="container">
+                <h2 class="text-center mt-3 mb-lg-5 grd">Champion! You Passed all Parameters. <br><span style="font-size: 14px;">(Choose One card as offer)</span></h2>
+                <div class="card-container" id="cardContainer">
+                    <!-- Cards will be generated here -->
+                </div>
+                
+                <script>
+                    const offers = [
+                        { img: "assets/image/ofr1.png", text: "Offer 1" },
+                        { img: "assets/image/ofr2.png", text: "Offer 2" },
+                        { img: "assets/image/ofr3.png", text: "Offer 3" },
+                        { img: "assets/image/ofr4.png", text: "Offer 4" },
+                        { img: "assets/image/ofr5.png", text: "Offer 5" },
+                        { img: "assets/image/ofr6.png", text: "Offer 6" },
+                        // { img: "assets/image/offer7.jpg", text: "Offer 7" },
+                        // { img: "assets/image/offer8.jpg", text: "Offer 8" },
+                        // { img: "assets/image/offer9.jpg", text: "Offer 9" }
+                    ];
+                
+                    const cardContainer = document.getElementById("cardContainer");
+                
+                    // Generate the cards dynamically
+                    let cardHTML = "";
+                    for (let i = 0; i < offers.length; i++) {
+                        cardHTML += `
+                            <div class="card" onclick="flipCard(this)">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img src="assets/image/card front.jpg" alt="Front Image">
+                                    </div>
+                                    <div class="card-back p-3 text-center">
+                                        <img src="${offers[i].img}" alt="${offers[i].text}">
+                                        <p class="mt-1">${offers[i].text}</p>
+                                        <button class="btn btn-primary mt-1 claim-btn" data-offer="${offers[i].text}">Claim</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }  
+                    cardContainer.innerHTML = cardHTML;              
+                </script>
+                
             </div>
-            <button class="btn btn-custom btn-accept" onclick="window.location.href='ofr2.html'">Accept</button>
-            <button class="btn btn-custom btn-decline" onclick="window.location.href='ofr2.html'">Decline</button>
-        </div>
-    </div>
-
-    <!-- footer start  -->
+        </section>
+    </main>
     <footer class="sw-footer-section">
         <div class="sw-footer-center">
             <div class="container">
@@ -372,7 +354,8 @@
                             </a>
                             <div class="sw-footer-about-content">
                                 <p class="sw-footer-about-description">Don’t miss the chance</p>
-                                <p class="sw-footer-about-description"><strong>Grab your luck to win $500.00 with the Sweepwin</strong></p>
+                                <p class="sw-footer-about-description"><strong>Grab your luck to win $500.00 with the
+                                        Sweepwin</strong></p>
                             </div>
                         </div>
                     </div>
@@ -415,7 +398,8 @@
                                     <h4 class="sw-footer-block-title">Let's talk</h4>
                                     <ul class="sw-footer-block-list">
                                         <li class="sw-footer-block-item">
-                                            <a href="javascript:void(0);" class="sw-footer-block-link">sweepwin@gmial.com</a>
+                                            <a href="javascript:void(0);"
+                                                class="sw-footer-block-link">sweepwin@gmial.com</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -435,16 +419,20 @@
                         <div class="col-12 col-lg-6">
                             <ul class="sw-footer-social-list">
                                 <li class="sw-footer-social-item">
-                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i
+                                            class="fa-brands fa-facebook-f"></i></a>
                                 </li>
                                 <li class="sw-footer-social-item">
-                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i
+                                            class="fa-brands fa-twitter"></i></a>
                                 </li>
                                 <li class="sw-footer-social-item">
-                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-google-plus-g"></i></a>
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i
+                                            class="fa-brands fa-google-plus-g"></i></a>
                                 </li>
                                 <li class="sw-footer-social-item">
-                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="javascript:void(0)" class="sw-footer-social-link"><i
+                                            class="fa-brands fa-instagram"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -453,22 +441,31 @@
             </div>
         </div>
     </footer>
-    <!-- footer end -->
-
-
-    <a href="#" class="sw-scroll-to-top"><i class="fa-solid fa-angles-up"></i></a>
-
-
-    <!-- all js -->
+    <script>               
+                // Flip card function
+                function flipCard(card) {
+                    if (document.querySelector('.flipped')) return; // Prevent multiple selections
+                    card.classList.add('flipped');
+                    document.querySelectorAll('.card').forEach(c => {
+                        if (c !== card) c.classList.add('disabled-card');
+                    });
+                }
+            
+                // Attach event listener to all "Claim" buttons
+                document.querySelectorAll(".claim-btn").forEach(button => {
+                    button.addEventListener("click", function (event) {
+                        event.stopPropagation(); // Prevent card from flipping back
+                        const offerName = this.getAttribute("data-offer");
+                        window.location.href = `dtlform.html`;
+                    });
+                });
+                setTimeout(function() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }, 1500); // 3000 milliseconds = 3 seconds
+    </script>
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/custom.js"></script>
-    <script>
-        setTimeout(function() {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-        }, 2000); // 3000 milliseconds = 3 seconds
-    </script>
 </body>
-
 </html>
